@@ -5,7 +5,7 @@ package redisimport;
 service RedisImport {
   
   rpc Import (User) returns (ImportReply) {}
-  rpc ImportBulk (stream User) returns (ImportReply) {}
+  // rpc ImportBulk (stream User) returns (ImportReply) {}
 }
 
 message User {
@@ -23,5 +23,5 @@ message User {
 // The response message containing the greetings
 message ImportReply {
   string message = 1;
-  int32 users = 2;
+  string user = 2;
 }

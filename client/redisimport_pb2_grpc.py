@@ -19,11 +19,6 @@ class RedisImportStub(object):
                 request_serializer=redisimport__pb2.User.SerializeToString,
                 response_deserializer=redisimport__pb2.ImportReply.FromString,
                 )
-        self.ImportBulk = channel.stream_unary(
-                '/redisimport.RedisImport/ImportBulk',
-                request_serializer=redisimport__pb2.User.SerializeToString,
-                response_deserializer=redisimport__pb2.ImportReply.FromString,
-                )
 
 
 class RedisImportServicer(object):
@@ -35,22 +30,11 @@ class RedisImportServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ImportBulk(self, request_iterator, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_RedisImportServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Import': grpc.unary_unary_rpc_method_handler(
                     servicer.Import,
-                    request_deserializer=redisimport__pb2.User.FromString,
-                    response_serializer=redisimport__pb2.ImportReply.SerializeToString,
-            ),
-            'ImportBulk': grpc.stream_unary_rpc_method_handler(
-                    servicer.ImportBulk,
                     request_deserializer=redisimport__pb2.User.FromString,
                     response_serializer=redisimport__pb2.ImportReply.SerializeToString,
             ),
@@ -75,22 +59,6 @@ class RedisImport(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/redisimport.RedisImport/Import',
-            redisimport__pb2.User.SerializeToString,
-            redisimport__pb2.ImportReply.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ImportBulk(request_iterator,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/redisimport.RedisImport/ImportBulk',
             redisimport__pb2.User.SerializeToString,
             redisimport__pb2.ImportReply.FromString,
             options, channel_credentials,

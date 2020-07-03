@@ -147,7 +147,7 @@ type ImportReply struct {
 	unknownFields protoimpl.UnknownFields
 
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Users   int32  `protobuf:"varint,2,opt,name=users,proto3" json:"users,omitempty"`
+	User    string `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 }
 
 func (x *ImportReply) Reset() {
@@ -189,11 +189,11 @@ func (x *ImportReply) GetMessage() string {
 	return ""
 }
 
-func (x *ImportReply) GetUsers() int32 {
+func (x *ImportReply) GetUser() string {
 	if x != nil {
-		return x.Users
+		return x.User
 	}
-	return 0
+	return ""
 }
 
 var File_redisimport_redisimport_proto protoreflect.FileDescriptor
@@ -216,20 +216,16 @@ var file_redisimport_redisimport_proto_rawDesc = []byte{
 	0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x61,
 	0x67, 0x65, 0x6e, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x67, 0x65, 0x6e,
 	0x74, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x18, 0x09, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x22, 0x3d, 0x0a, 0x0b, 0x49,
+	0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x22, 0x3b, 0x0a, 0x0b, 0x49,
 	0x6d, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65,
 	0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73,
-	0x73, 0x61, 0x67, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x32, 0x85, 0x01, 0x0a, 0x0b, 0x52,
-	0x65, 0x64, 0x69, 0x73, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x37, 0x0a, 0x06, 0x49, 0x6d,
-	0x70, 0x6f, 0x72, 0x74, 0x12, 0x11, 0x2e, 0x72, 0x65, 0x64, 0x69, 0x73, 0x69, 0x6d, 0x70, 0x6f,
-	0x72, 0x74, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x18, 0x2e, 0x72, 0x65, 0x64, 0x69, 0x73, 0x69,
-	0x6d, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x00, 0x12, 0x3d, 0x0a, 0x0a, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x42, 0x75, 0x6c,
-	0x6b, 0x12, 0x11, 0x2e, 0x72, 0x65, 0x64, 0x69, 0x73, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x2e,
+	0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x32, 0x46, 0x0a, 0x0b, 0x52, 0x65, 0x64, 0x69,
+	0x73, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x37, 0x0a, 0x06, 0x49, 0x6d, 0x70, 0x6f, 0x72,
+	0x74, 0x12, 0x11, 0x2e, 0x72, 0x65, 0x64, 0x69, 0x73, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x2e,
 	0x55, 0x73, 0x65, 0x72, 0x1a, 0x18, 0x2e, 0x72, 0x65, 0x64, 0x69, 0x73, 0x69, 0x6d, 0x70, 0x6f,
 	0x72, 0x74, 0x2e, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00,
-	0x28, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -251,11 +247,9 @@ var file_redisimport_redisimport_proto_goTypes = []interface{}{
 }
 var file_redisimport_redisimport_proto_depIdxs = []int32{
 	0, // 0: redisimport.RedisImport.Import:input_type -> redisimport.User
-	0, // 1: redisimport.RedisImport.ImportBulk:input_type -> redisimport.User
-	1, // 2: redisimport.RedisImport.Import:output_type -> redisimport.ImportReply
-	1, // 3: redisimport.RedisImport.ImportBulk:output_type -> redisimport.ImportReply
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	1, // 1: redisimport.RedisImport.Import:output_type -> redisimport.ImportReply
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -325,7 +319,6 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RedisImportClient interface {
 	Import(ctx context.Context, in *User, opts ...grpc.CallOption) (*ImportReply, error)
-	ImportBulk(ctx context.Context, opts ...grpc.CallOption) (RedisImport_ImportBulkClient, error)
 }
 
 type redisImportClient struct {
@@ -345,44 +338,9 @@ func (c *redisImportClient) Import(ctx context.Context, in *User, opts ...grpc.C
 	return out, nil
 }
 
-func (c *redisImportClient) ImportBulk(ctx context.Context, opts ...grpc.CallOption) (RedisImport_ImportBulkClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_RedisImport_serviceDesc.Streams[0], "/redisimport.RedisImport/ImportBulk", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &redisImportImportBulkClient{stream}
-	return x, nil
-}
-
-type RedisImport_ImportBulkClient interface {
-	Send(*User) error
-	CloseAndRecv() (*ImportReply, error)
-	grpc.ClientStream
-}
-
-type redisImportImportBulkClient struct {
-	grpc.ClientStream
-}
-
-func (x *redisImportImportBulkClient) Send(m *User) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *redisImportImportBulkClient) CloseAndRecv() (*ImportReply, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(ImportReply)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 // RedisImportServer is the server API for RedisImport service.
 type RedisImportServer interface {
 	Import(context.Context, *User) (*ImportReply, error)
-	ImportBulk(RedisImport_ImportBulkServer) error
 }
 
 // UnimplementedRedisImportServer can be embedded to have forward compatible implementations.
@@ -391,9 +349,6 @@ type UnimplementedRedisImportServer struct {
 
 func (*UnimplementedRedisImportServer) Import(context.Context, *User) (*ImportReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Import not implemented")
-}
-func (*UnimplementedRedisImportServer) ImportBulk(RedisImport_ImportBulkServer) error {
-	return status.Errorf(codes.Unimplemented, "method ImportBulk not implemented")
 }
 
 func RegisterRedisImportServer(s *grpc.Server, srv RedisImportServer) {
@@ -418,32 +373,6 @@ func _RedisImport_Import_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RedisImport_ImportBulk_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(RedisImportServer).ImportBulk(&redisImportImportBulkServer{stream})
-}
-
-type RedisImport_ImportBulkServer interface {
-	SendAndClose(*ImportReply) error
-	Recv() (*User, error)
-	grpc.ServerStream
-}
-
-type redisImportImportBulkServer struct {
-	grpc.ServerStream
-}
-
-func (x *redisImportImportBulkServer) SendAndClose(m *ImportReply) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *redisImportImportBulkServer) Recv() (*User, error) {
-	m := new(User)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 var _RedisImport_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "redisimport.RedisImport",
 	HandlerType: (*RedisImportServer)(nil),
@@ -453,12 +382,6 @@ var _RedisImport_serviceDesc = grpc.ServiceDesc{
 			Handler:    _RedisImport_Import_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "ImportBulk",
-			Handler:       _RedisImport_ImportBulk_Handler,
-			ClientStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "redisimport/redisimport.proto",
 }

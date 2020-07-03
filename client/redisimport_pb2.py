@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11redisimport.proto\x12\x0bredisimport\"\x9f\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x01\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0e\n\x06gender\x18\x05 \x01(\t\x12\x12\n\nip_address\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\r\n\x05\x61gent\x18\x08 \x01(\t\x12\x0f\n\x07\x63ountry\x18\t \x01(\t\"-\n\x0bImportReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05users\x18\x02 \x01(\x05\x32\x85\x01\n\x0bRedisImport\x12\x37\n\x06Import\x12\x11.redisimport.User\x1a\x18.redisimport.ImportReply\"\x00\x12=\n\nImportBulk\x12\x11.redisimport.User\x1a\x18.redisimport.ImportReply\"\x00(\x01\x62\x06proto3'
+  serialized_pb=b'\n\x11redisimport.proto\x12\x0bredisimport\"\x9f\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x01\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0e\n\x06gender\x18\x05 \x01(\t\x12\x12\n\nip_address\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\r\n\x05\x61gent\x18\x08 \x01(\t\x12\x0f\n\x07\x63ountry\x18\t \x01(\t\",\n\x0bImportReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04user\x18\x02 \x01(\t2F\n\x0bRedisImport\x12\x37\n\x06Import\x12\x11.redisimport.User\x1a\x18.redisimport.ImportReply\"\x00\x62\x06proto3'
 )
 
 
@@ -129,9 +129,9 @@ _IMPORTREPLY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='users', full_name='redisimport.ImportReply.users', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='user', full_name='redisimport.ImportReply.user', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -148,7 +148,7 @@ _IMPORTREPLY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=196,
-  serialized_end=241,
+  serialized_end=240,
 )
 
 DESCRIPTOR.message_types_by_name['User'] = _USER
@@ -178,23 +178,13 @@ _REDISIMPORT = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=244,
-  serialized_end=377,
+  serialized_start=242,
+  serialized_end=312,
   methods=[
   _descriptor.MethodDescriptor(
     name='Import',
     full_name='redisimport.RedisImport.Import',
     index=0,
-    containing_service=None,
-    input_type=_USER,
-    output_type=_IMPORTREPLY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='ImportBulk',
-    full_name='redisimport.RedisImport.ImportBulk',
-    index=1,
     containing_service=None,
     input_type=_USER,
     output_type=_IMPORTREPLY,
