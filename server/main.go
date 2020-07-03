@@ -7,6 +7,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"log"
 	"net"
+	"os"
 	"sync"
 
 	"google.golang.org/grpc"
@@ -14,19 +15,24 @@ import (
 )
 var rdb *redis.Client
 func main() {
+	port := getenv("GRPC_PORT","50051")
+
+	redisHost := getenv("REDIS_HOST","127.0.0.1:6379")
+
 	rdb = redis.NewClient(&redis.Options{
-		Addr:     "127.0.0.1:6379",
+		Addr:     redisHost,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
 	pong, err := rdb.Ping(ctx).Result()
 	fmt.Println(pong, err)
 
-	lis, err := net.Listen("tcp", ":50051")
+
+	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	log.Printf("Server started on port 50051")
+	log.Printf("Server started on port %v",port)
 	grpcServer := grpc.NewServer()
 
 	pb.RegisterRedisImportServer(grpcServer,new(userService))
@@ -64,3 +70,10 @@ func (u userService) Import(ctx context.Context, user *pb.User) (*pb.ImportReply
 	return resp,nil
 }
 
+func getenv(key, fallback string) string {
+	value := os.Getenv(key)
+	if len(value) == 0 {
+		return fallback
+	}
+	return value
+}
