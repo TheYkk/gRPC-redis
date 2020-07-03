@@ -1,0 +1,33 @@
+version: "3.6"
+services:
+  redis:
+    image: "redis:6-alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-volume:/data
+    networks: 
+      - grpc
+  client:
+    image: "grpc-client"
+    build:
+      context: ./client
+    environment: 
+      - GRPC_SERVER=server:50051
+    networks: 
+      - grpc
+  server:
+    image: "grpc-server"
+    build:
+      context: ./server
+    ports:
+      - "50051:50051"
+    environment: 
+      - GRPC_PORT=50051
+      - REDIS_HOST=redis:6379
+    networks: 
+      - grpc
+volumes:
+  redis-volume:
+networks: 
+  grpc:
