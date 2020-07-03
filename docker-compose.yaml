@@ -1,0 +1,18 @@
+version: "3.6"
+services:
+  redis:
+    image: "redis:6-alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-volume:/data
+  client:
+    image: "grclient"
+    build:
+      context: ./client
+  server:
+    image: "grserver"
+    build:
+      context: ./server
+volumes:
+  redis-volume:
