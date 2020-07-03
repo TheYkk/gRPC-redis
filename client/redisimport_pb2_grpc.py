@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from redisimport import redisimport_pb2 as redisimport_dot_redisimport__pb2
+import redisimport_pb2 as redisimport__pb2
 
 
 class RedisImportStub(object):
@@ -16,13 +16,13 @@ class RedisImportStub(object):
         """
         self.Import = channel.unary_unary(
                 '/redisimport.RedisImport/Import',
-                request_serializer=redisimport_dot_redisimport__pb2.User.SerializeToString,
-                response_deserializer=redisimport_dot_redisimport__pb2.ImportReply.FromString,
+                request_serializer=redisimport__pb2.User.SerializeToString,
+                response_deserializer=redisimport__pb2.ImportReply.FromString,
                 )
         self.ImportBulk = channel.stream_unary(
                 '/redisimport.RedisImport/ImportBulk',
-                request_serializer=redisimport_dot_redisimport__pb2.User.SerializeToString,
-                response_deserializer=redisimport_dot_redisimport__pb2.ImportReply.FromString,
+                request_serializer=redisimport__pb2.User.SerializeToString,
+                response_deserializer=redisimport__pb2.ImportReply.FromString,
                 )
 
 
@@ -46,13 +46,13 @@ def add_RedisImportServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Import': grpc.unary_unary_rpc_method_handler(
                     servicer.Import,
-                    request_deserializer=redisimport_dot_redisimport__pb2.User.FromString,
-                    response_serializer=redisimport_dot_redisimport__pb2.ImportReply.SerializeToString,
+                    request_deserializer=redisimport__pb2.User.FromString,
+                    response_serializer=redisimport__pb2.ImportReply.SerializeToString,
             ),
             'ImportBulk': grpc.stream_unary_rpc_method_handler(
                     servicer.ImportBulk,
-                    request_deserializer=redisimport_dot_redisimport__pb2.User.FromString,
-                    response_serializer=redisimport_dot_redisimport__pb2.ImportReply.SerializeToString,
+                    request_deserializer=redisimport__pb2.User.FromString,
+                    response_serializer=redisimport__pb2.ImportReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -75,8 +75,8 @@ class RedisImport(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/redisimport.RedisImport/Import',
-            redisimport_dot_redisimport__pb2.User.SerializeToString,
-            redisimport_dot_redisimport__pb2.ImportReply.FromString,
+            redisimport__pb2.User.SerializeToString,
+            redisimport__pb2.ImportReply.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -91,7 +91,7 @@ class RedisImport(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.stream_unary(request_iterator, target, '/redisimport.RedisImport/ImportBulk',
-            redisimport_dot_redisimport__pb2.User.SerializeToString,
-            redisimport_dot_redisimport__pb2.ImportReply.FromString,
+            redisimport__pb2.User.SerializeToString,
+            redisimport__pb2.ImportReply.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
